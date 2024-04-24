@@ -1,0 +1,50 @@
+.home-page {
+
+    .text-zone {
+        position: absolute;
+        left: 15%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40%;
+        max-height: 90%;
+        
+    }
+    h1 {
+        color: #F7CC90;
+        font-size: 53px;
+        margin: 0;
+        line-height: 1;
+        font-family: 'Sohne-Buch';
+        font-weight: 400;
+    }
+}
+
+h2 {
+    color: #F7CC90;
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 20px;
+    font-family: 'Sohne-Buch';
+    letter-spacing: 0px;
+    // animation: fadeIn 1s 0.5s backwards;
+
+}
+
+.flat-button {
+    color: #F7CC90;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-decoration: 0;
+    padding: 5px 18px;
+    border: 1px solid #F7CC90;
+    margin-top: 25px;
+    float: left;
+    // animation: fadeIn 1s 1s backwards;
+    white-space: nowrap;
+
+    &:hover {
+        background: #F7CC90;
+        color: #215254;
+    }
+}

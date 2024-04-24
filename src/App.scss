@@ -1,0 +1,23 @@
+$primary-color: #004225;
+
+@import 'animate.css';
+
+// @font-face {
+//   font-family: 'Roboto';
+//   src: url('./assets/fonts/Roboto/Roboto-Black.ttf') format('truetype');
+// }
+
+@font-face {
+  font-family: 'Sohne-Halbfett';
+  src: url('./assets/fonts/Sohne-Font-Family/Söhne-Font-Family-Collection/Test Söhne/TestSöhne-Halbfett.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Sohne-Buch';
+  src: url('./assets/fonts/Sohne-Font-Family/Söhne-Font-Family-Collection/Test Söhne/TestSöhne-Buch.otf') format('opentype');
+}
+
+input,
+textarea {
+  font-family: 'Sohne-Buch';
+}

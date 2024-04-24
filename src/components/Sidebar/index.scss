@@ -1,0 +1,96 @@
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    // opacity: 0;
+
+    .logo {
+        margin-left: 20px;
+        // display: block;
+        // padding: 8px 0; // top bottom 8 left right 0
+
+        img {
+            display: block;
+            margin: 8px auto;
+            width: 80px;
+        }
+    }
+
+
+
+    nav { // three middle icons
+        display: flex;  
+        justify-content: flex-end;
+        align-items: center;
+        height: auto;
+        margin-right: 30px;
+
+        a { // for each nav link
+            margin-left: 20px;
+            font-size: 22px;
+            color: #F7CC90;
+            display: block;
+            line-height: 51px;
+            height: 51px;
+            position: relative;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        .dropdown {
+            position: relative;
+            cursor: pointer;
+          
+            .dropdown-toggle {
+              font-size: 22px;
+              color: #F7CC90;
+              text-decoration: none;
+              margin-left: 20px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            .arrow {
+                width: 1em;
+                height: 1em;
+                margin-left: 5px;
+                transition: transform 0.3s ease;
+                transform: translateY(5px);
+            
+                &.up {
+                  transform: translateY(5px) rotate(180deg);
+                }
+            }
+
+          
+            .dropdown-menu {
+              position: absolute;
+              top: 100%;
+            
+          
+              a {
+                display: block;
+                font-size: 22px;
+                color: #F7CC90;
+                text-decoration: none;
+                margin-bottom: -20px;
+          
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+            }
+        }
+    }
+}
+
+
+
