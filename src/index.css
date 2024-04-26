@@ -1,16 +1,24 @@
-html {
-  font-size: 62.5%;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+  font-family: 'Sohne-Halbfett';
+  src: url('./assets/fonts/Sohne-Font-Family/Söhne-Font-Family-Collection/Test Söhne/TestSöhne-Halbfett.otf') format('opentype');
 }
 
-
-body {
-  margin: 0;
-  font: 300 11px/1.4 'Sohne-Buch';
-  color: #444;
-  background: #215254;
-  overflow: hidden;
-  display: block;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Sohne-Buch';
+  src: url('./assets/fonts/Sohne-Font-Family/Söhne-Font-Family-Collection/Test Söhne/TestSöhne-Buch.otf') format('opentype');
 }
+
+@layer base {
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    @apply m-0 font-light text-[11px] leading-[1.4] font-['Sohne-Buch'] text-[#444] bg-[#215254] overflow-hidden block antialiased;
+  }
+}
+
