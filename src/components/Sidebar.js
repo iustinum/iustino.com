@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import LogoJ from '/Users/justinwu/iustino.com/src/assets/images/jwu-logo-colored.svg';
+import LogoJ from '../assets/images/jwu-logo-colored.svg';
 import { useState, useEffect } from 'react';
 
 const Sidebar = () => {
