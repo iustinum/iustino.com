@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import photo from '/Users/justinwu/iustino.com/src/assets/images/homepage-image.jpg';
+import photo from '../assets/images/homepage-image.jpg';
 import { motion as m } from "framer-motion";
 
 const Home = () => {
