@@ -1,11 +1,13 @@
-import Sidebar from './Sidebar';
-import { Outlet } from 'react-router-dom';
+import Sidebar from "./Sidebar";
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <div className="App">
-      <Sidebar />
-      <div className="absolute w-full h-full">
+    <div className="flex flex-col min-h-screen">
+      <div> 
+        <Sidebar/>
+      </div>
+      <div>
         <Outlet />
       </div>
     </div>

@@ -1,9 +1,10 @@
-import { Link, NavLink } from 'react-router-dom';
-import LogoJ from '../assets/images/jwu-logo-colored.svg';
-import { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from "react-router-dom";
+import LogoJ from "../assets/images/jwu-logo-colored.svg";
+import { useState, useEffect } from "react";
 
 const Sidebar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const location = useLocation();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -11,50 +12,53 @@ const Sidebar = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (!event.target.closest('.dropdown')) {
+      if (!event.target.closest(".dropdown")) {
         setIsDropdownOpen(false);
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
+  const getBackgroundColor = (pathname) => {
+    switch(pathname) {
+      case '/':
+        return 'bg-slate-600';
+      case '/about':
+        return 'bg-red-500';
+      case '/projects':
+        return 'bg-green-500';
+      case '/blog':
+        return 'bg-blue-500';
+      default:
+        return 'bg-white';
+    }
+  }
+
   return (
-    <div className="flex justify-between items-center w-full h-auto absolute top-0 z-10">
-      <Link className="ml-5" to="/">
-        <img src={LogoJ} alt="logo" className="block mx-auto w-20 my-2" />
+    <div className={`flex justify-between items-center w-full h-auto fixed top-0 ${getBackgroundColor(location.pathname)}`}>
+      <Link className="ml-[24px]" to="/">
+        <img src={LogoJ} alt="logo" className="block mx-auto w-20 my-2"/>
       </Link>
-      <nav className="flex justify-end items-center h-auto mr-7">
-        <NavLink
-          to="/"
-          className="ml-5 text-2xl text-[#F7CC90] block leading-[51px] h-[51px] relative no-underline hover:underline"
-        >
+      <nav className="flex mr-[24px]">
+        <NavLink to="/" className="sidebar-item">
           Home
         </NavLink>
-        <NavLink
-          className="about-link ml-5 text-2xl text-[#F7CC90] block leading-[51px] h-[51px] relative no-underline hover:underline"
-          to="/about"
-        >
+        <NavLink className="sidebar-item" to="/about">
           About
         </NavLink>
-        <NavLink
-          className="projects-link ml-5 text-2xl text-[#F7CC90] block leading-[51px] h-[51px] relative no-underline hover:underline"
-          to="/projects"
-        >
+        <NavLink className="sidebar-item" to="/projects">
           Projects
         </NavLink>
-        <NavLink
-          className="projects-link ml-5 text-2xl text-[#F7CC90] block leading-[51px] h-[51px] relative no-underline hover:underline"
-          to="/blog"
-        >
+        <NavLink className="sidebar-item" to="/blog">
           Blog
         </NavLink>
-        <div className="dropdown relative cursor-pointer flex items-center">
+        <div className="flex dropdown cursor-pointer">
           <span
-            className="dropdown-toggle text-2xl text-[#F7CC90] no-underline ml-5 hover:underline flex items-center"
+            className="flex items-center sidebar-item"
             onClick={toggleDropdown}
           >
             Contact
@@ -62,8 +66,8 @@ const Sidebar = () => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
-              className={`arrow w-4 h-4 ml-1 transition-transform duration-300 ease-in-out transform translate-y-1 ${
-                isDropdownOpen ? 'rotate-180' : ''
+              className={`arrow w-6 h-6 ml-1 transition-transform duration-300 ease-in-out transform ${
+                isDropdownOpen ? "rotate-180" : ""
               }`}
             >
               <polygon
@@ -73,39 +77,11 @@ const Sidebar = () => {
             </svg>
           </span>
           {isDropdownOpen && (
-            <div className="dropdown-menu absolute top-full mt-2">
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.linkedin.com/in/juwu/"
-                className="block text-2xl text-[#F7CC90] no-underline py-1 hover:underline"
-              >
-                LinkedIn
-              </a>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://github.com/iustinum"
-                className="block text-2xl text-[#F7CC90] no-underline py-1 hover:underline"
-              >
-                GitHub
-              </a>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://twitter.com/_justinwu"
-                className="block text-2xl text-[#F7CC90] no-underline py-1 hover:underline"
-              >
-                Twitter
-              </a>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://news.ycombinator.com/user?id=wuj"
-                className="block text-2xl text-[#F7CC90] no-underline py-1 hover:underline"
-              >
-                HN
-              </a>
+            <div className="dropdown-menu">
+              <Link className="dropdown-item" to="https://www.linkedin.com/in/juwu/" target="_blank">LinkedIn</Link>
+              <Link className="dropdown-item" to="https://github.com/iustinum" target="_blank">GitHub</Link>
+              <Link className="dropdown-item" to="https://twitter.com/_justinwu" target="_blank">Twitter</Link>
+              <Link className="dropdown-item" to="https://news.ycombinator.com/user?id=wuj" target="_blank">HN</Link>
             </div>
           )}
         </div>

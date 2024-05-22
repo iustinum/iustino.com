@@ -1,16 +1,49 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @font-face {
-  font-family: 'Sohne-Halbfett';
-  src: url('./assets/fonts/Sohne-Font-Family/Söhne-Font-Family-Collection/Test Söhne/TestSöhne-Halbfett.otf') format('opentype');
+  font-family: "Sohne-Halbfett";
+  src: url("./assets/fonts/Sohne-Font-Family/Söhne-Font-Family-Collection/Test Söhne/TestSöhne-Halbfett.otf")
+    format("opentype");
 }
 
 @font-face {
-  font-family: 'Sohne-Buch';
-  src: url('./assets/fonts/Sohne-Font-Family/Söhne-Font-Family-Collection/Test Söhne/TestSöhne-Buch.otf') format('opentype');
+  font-family: "Sohne-Buch";
+  src: url("./assets/fonts/Sohne-Font-Family/Söhne-Font-Family-Collection/Test Söhne/TestSöhne-Buch.otf")
+    format("opentype");
 }
+
+@font-face {
+  font-family: "Signifier-Light";
+  src: url("./assets/fonts/Test Signifier/TestSignifier-Light.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "SohneBreit-Kraftig";
+  src: url("./assets/fonts/KlimTestFonts/Test desktop fonts (OTF)/Test Söhne Collection/Test Söhne Breit/TestSöhneBreit-Kräftig.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "SohneBreit-Buch";
+  src: url("./assets/fonts/KlimTestFonts/Test desktop fonts (OTF)/Test Söhne Collection/Test Söhne Breit/TestSöhneBreit-Buch.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "SohneBreit-Buch";
+  src: url("./assets/fonts/KlimTestFonts/Test desktop fonts (OTF)/Test Söhne Collection/Test Söhne Breit/TestSöhneBreit-Buch.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "MartinaPlantijn-Regular";
+  src: url("./assets/fonts/KlimTestFonts/Test desktop fonts (OTF)/Test Martina Plantijn/TestMartinaPlantijn-Regular.otf")
+    format("opentype");
+}
+
 
 @layer base {
   html {
@@ -18,7 +51,94 @@
   }
 
   body {
-    @apply m-0 font-light text-[11px] leading-[1.4] font-['Sohne-Buch'] text-[#444] bg-[#215254] overflow-hidden block antialiased;
+    @apply leading-[1.4] font-['Sohne-Buch'] text-black bg-white overflow-auto antialiased;
   }
 }
 
+/*global*/
+.title {
+  @apply font-['Sohne-Halbfett'] text-[73px] leading-none;
+}
+
+.title-2 {
+  @apply text-[48px] leading-none font-['Sohne-Halbfett'];
+}
+
+.title-3 {
+  @apply mt-5 text-[28px] leading-none pb-8 font-['Sohne-Buch'];
+}
+
+.link {
+  @apply font-['Sohne-Buch'] text-[18px] px-[12px] py-[8px] border border-black hover:bg-white hover:text-black w-fit;
+}
+
+/*sidebar*/
+
+.sidebar-item {
+  @apply font-['Sohne-Buch'] ml-5 text-[18px] leading-[51px] hover:underline flex items-center;
+}
+
+.dropdown-menu {
+  @apply absolute top-full w-max;
+}
+
+.dropdown-item {
+  @apply font-['Sohne-Buch'] block text-[18px] no-underline py-1 hover:underline;
+}
+
+.dropdown {
+  @apply relative;
+}
+
+/*home*/
+
+.home-content {
+  @apply flex flex-col sm:flex-row min-h-screen overflow-auto items-center justify-center bg-white;
+}
+
+.home-content-container {
+  @apply flex flex-col sm:flex-row justify-between mx-[24px] my-28;
+}
+
+.home-content-text-area {
+  @apply flex flex-col mb-8;
+}
+
+.home-content-image {
+  @apply object-contain max-h-[70vh] w-1/2;
+}
+
+/*about*/
+
+.about-content {
+  @apply flex flex-col min-h-screen overflow-auto bg-red-500;
+}
+
+.about-section {
+  @apply flex flex-col min-h-fit sm:flex-row justify-between;
+}
+
+.about-section-container {
+  @apply flex flex-col items-center mx-[24px];
+}
+
+.about-section-text-area {
+  @apply flex flex-col sm:flex-row w-full justify-between items-start;
+}
+
+.about-section-image {
+  @apply mt-[80px] h-auto mb-[40px];
+}
+
+/*blog landing*/
+.blog-content {
+  @apply flex flex-col min-h-screen overflow-auto bg-blue-500;
+}
+
+.blog-section {
+  @apply flex flex-col min-h-fit sm:flex-row justify-between;
+}
+
+.blog-section-container {
+  @apply flex flex-col items-center mx-[24px];
+}
