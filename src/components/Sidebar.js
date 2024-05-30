@@ -23,34 +23,35 @@ const Sidebar = () => {
     };
   }, []);
 
-  const getBackgroundColor = (pathname) => {
-    switch(pathname) {
-      case '/':
-        return 'bg-slate-600';
-      case '/about':
-        return 'bg-red-500';
-      case '/projects':
-        return 'bg-green-500';
-      case '/blog':
-        return 'bg-blue-500';
-      default:
-        return 'bg-white';
-    }
-  }
 
   return (
-    <div className={`flex justify-between items-center w-full h-auto fixed top-0 ${getBackgroundColor(location.pathname)}`}>
+    <div className="flex justify-between items-center w-full h-auto fixed top-0 bg-themeBackground text-themeText">
       <Link className="ml-[24px]" to="/">
-        <img src={LogoJ} alt="logo" className="block mx-auto w-20 my-2"/>
+        <svg
+          id="Layer_1"
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 289.6 87.42"
+          className="block mx-auto w-40 h-12 my-2 text-themeText"
+        >
+          <text
+            className="fill-current font-['Arial-Black'] text-[100px] tracking-[-0.13em] transform translate-y-[85.98px] scale-x-[1.12] scale-y-[1]"
+            transform="translate(-2.28 85.98) scale(1.12 1)"
+          >
+            <tspan x="0" y="0">
+              JWU
+            </tspan>
+          </text>
+        </svg>
       </Link>
       <nav className="flex mr-[24px]">
         <NavLink to="/" className="sidebar-item">
           Home
         </NavLink>
-        <NavLink className="sidebar-item" to="/about">
+        <NavLink to="/about" className="sidebar-item">
           About
         </NavLink>
-        <NavLink className="sidebar-item" to="/projects">
+        <NavLink to="/projects" className="sidebar-item">
           Projects
         </NavLink>
         <NavLink className="sidebar-item" to="/blog">
@@ -78,10 +79,34 @@ const Sidebar = () => {
           </span>
           {isDropdownOpen && (
             <div className="dropdown-menu">
-              <Link className="dropdown-item" to="https://www.linkedin.com/in/juwu/" target="_blank">LinkedIn</Link>
-              <Link className="dropdown-item" to="https://github.com/iustinum" target="_blank">GitHub</Link>
-              <Link className="dropdown-item" to="https://twitter.com/_justinwu" target="_blank">Twitter</Link>
-              <Link className="dropdown-item" to="https://news.ycombinator.com/user?id=wuj" target="_blank">HN</Link>
+              <Link
+                className={`dropdown-item`}
+                to="https://www.linkedin.com/in/juwu/"
+                target="_blank"
+              >
+                LinkedIn
+              </Link>
+              <Link
+                className="dropdown-item"
+                to="https://github.com/iustinum"
+                target="_blank"
+              >
+                GitHub
+              </Link>
+              <Link
+                className="dropdown-item"
+                to="https://twitter.com/_justinwu"
+                target="_blank"
+              >
+                Twitter
+              </Link>
+              <Link
+                className="dropdown-item"
+                to="https://news.ycombinator.com/user?id=wuj"
+                target="_blank"
+              >
+                HN
+              </Link>
             </div>
           )}
         </div>

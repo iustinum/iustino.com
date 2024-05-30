@@ -17,8 +17,8 @@ const Home = () => {
             I am Justin, <br />I code.
           </h1>
           <h2 className="title-3">Computer Science + Business at UC Berkeley.</h2>
-          <Link to="/projects" className="link">
-            PROJECTS
+          <Link to="/blog" className="link border-themeText hover:bg-themeText hover:text-themeBackground">
+            BLOG
           </Link>
         </div>
         <img

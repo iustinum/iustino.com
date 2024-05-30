@@ -9,7 +9,7 @@ const About = () => {
       transition={{ duration: 1 }}
       className="about-content"
     >
-      <div className="about-section pt-[160px]">
+      <div className="about-section-header">
         <div className="about-section-container">
           <div className="about-section-text-area">
             <h1 className="title">About</h1>
@@ -18,7 +18,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="about-section pt-[90px] bg-white">
+      <div className="about-section">
         <div className="about-section-container w-full">
           <div className="about-section-text-area border-t border-black pt-8">
             <h2 className="title-2 pb-8">Bio</h2>
@@ -50,7 +50,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="about-section pt-[90px] bg-white">
+      <div className="about-section">
         <div className="about-section-container w-full">
           <div className="about-section-text-area border-t border-black pt-8">
             <h2 className="title-2 pb-8">Education</h2>
@@ -76,7 +76,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="about-section pt-[90px] bg-white">
+      <div className="about-section">
         <div className="about-section-container w-full">
           <div className="about-section-text-area border-t border-black pt-8">
             <h2 className="title-2 pb-8">Work Experience</h2>
@@ -98,7 +98,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="about-section py-[90px] bg-white">
+      <div className="about-section mb-[90px]">
         <div className="about-section-container w-full">
           <div className="about-section-text-area border-t border-black pt-8">
             <h2 className="title-2 pb-8">Technical Skills</h2>
