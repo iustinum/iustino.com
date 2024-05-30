@@ -1,10 +1,8 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
-import LogoJ from "../assets/images/jwu-logo-colored.svg";
+import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Sidebar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const location = useLocation();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);

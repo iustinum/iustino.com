@@ -4,7 +4,7 @@
 
 ### May 29, 2024
 
-![cover](/assets/images/post-1.jpg)
+![cover](/assets/images/iustino.com/post-1.jpg)
 
 Welcome to my corner of the internet.
 
