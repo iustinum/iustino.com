@@ -1,20 +1,14 @@
-import { motion as m } from "framer-motion";
 import photo from "../assets/images/about-image.jpg";
 
 const About = () => {
   return (
-    <m.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="about-content"
-    >
+    <div className="about-content">
       <div className="about-section-header">
-        <div className="about-section-container">
+        <div className="about-section-header-container">
           <div className="about-section-text-area">
-            <h1 className="title">About</h1>
+            {/* <h1 className="title">About</h1> */}
           </div>
-          <img class="about-section-image" src={photo} alt="About" />
+          {/* <img class="about-section-image" src={photo} alt="About" /> */}
         </div>
       </div>
 
@@ -83,15 +77,11 @@ const About = () => {
             <div className="w-1/2 ml-2">
               <div className="">
                 <p className="text-[18px] font-bold">Intel</p>
-                <p className="text-[18px] mb-8">
-                  Software Engineer Intern
-                </p>
+                <p className="text-[18px] mb-8">Software Engineer Intern</p>
               </div>
               <div>
                 <p className="text-[18px] font-bold">Blum Center</p>
-                <p className="text-[18px] mb-8">
-                  Full-Stack Web Developer
-                </p>
+                <p className="text-[18px] mb-8">Full-Stack Web Developer</p>
               </div>
             </div>
           </div>
@@ -140,7 +130,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </m.div>
+    </div>
   );
 };
 

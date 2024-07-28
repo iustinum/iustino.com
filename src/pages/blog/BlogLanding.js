@@ -43,25 +43,28 @@ const BlogLanding = () => {
   }, []);
 
   return (
-    <m.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="blog-landing-content"
-    >
+    <div className="blog-landing-content">
       <div className="blog-landing-header">
         <div className="blog-landing-header-container">
           <div className="blog-section-text-area ">
-            <h1 className="title">Blog</h1>
+            {/* <h1 className="title">Blog</h1> */}
           </div>
         </div>
       </div>
 
       {posts.map((post, index) => (
-        <div key={post.slug} className={`blog-section pt-[90px] justify-center ${index === posts.length - 1 ? 'mb-[90px]' : ''}`}>
+        <div
+          key={post.slug}
+          className={`blog-section pt-[90px] justify-center ${
+            index === posts.length - 1 ? "mb-[90px]" : ""
+          }`}
+        >
           <div className="blog-section-container border-t border-black pt-8 w-full">
             <div className="blog-section-text-area mr-16">
-              <Link to={`/blog/${post.slug}`} className="title-2 pb-8 hover:underline">
+              <Link
+                to={`/blog/${post.slug}`}
+                className="title-2 pb-8 hover:underline"
+              >
                 <h2>{post.title}</h2>
               </Link>
               <p className="text-[18px] mb-8 font-bold">{post.date}</p>
@@ -77,7 +80,7 @@ const BlogLanding = () => {
           </div>
         </div>
       ))}
-    </m.div>
+    </div>
   );
 };
 

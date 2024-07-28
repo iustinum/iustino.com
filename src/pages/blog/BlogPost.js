@@ -145,10 +145,7 @@ const BlogPost = () => {
   }
 
   return (
-    <m.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+    <div
       className="blog-post-content"
     >
       <div className="blog-post-header">
@@ -176,7 +173,7 @@ const BlogPost = () => {
           ))}
         </div>
       </div>
-    </m.div>
+    </div>
   );
 };
 

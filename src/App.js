@@ -1,22 +1,26 @@
-import { Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Layout from './components/Layout';
-import Home from './components/Home';
-import About from './components/About';
-import BlogLanding from './components/blog/BlogLanding';
-import BlogPost from './components/blog/BlogPost';
+import Home from './pages/Home';
+import About from './pages/About';
+import BlogLanding from './pages/blog/BlogLanding';
+import BlogPost from './pages/blog/BlogPost';
 
 function App() {
+  const location = useLocation();
+  
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="blog" element={<BlogLanding />} />
-          <Route path="blog/:slug" element={<BlogPost />} />
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<BlogLanding />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Route>
       </Routes>
-    </>
+    </AnimatePresence>
   );
 }
 

@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const Sidebar = () => {
+const Sidebar = ({ currentPath }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -21,19 +21,18 @@ const Sidebar = () => {
     };
   }, []);
 
-
   return (
-    <div className="flex justify-between items-center w-full h-auto fixed top-0 bg-themeBackground text-themeText">
+    <div className="sidebar">
       <Link className="ml-[24px]" to="/">
         <svg
           id="Layer_1"
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 289.6 87.42"
-          className="block mx-auto w-40 h-12 my-2 text-themeText"
+          className="sidebar-logo"
         >
           <text
-            className="fill-current font-['Arial-Black'] text-[100px] tracking-[-0.13em] transform translate-y-[85.98px] scale-x-[1.12] scale-y-[1]"
+            className="fill-current font-['Arial-Black'] text-[100px] tracking-[-0.13em] translate-y-[85.98px] scale-x-[1.12] scale-y-[1]"
             transform="translate(-2.28 85.98) scale(1.12 1)"
           >
             <tspan x="0" y="0">
@@ -43,21 +42,41 @@ const Sidebar = () => {
         </svg>
       </Link>
       <nav className="flex mr-[24px]">
-        <NavLink to="/" className="sidebar-item">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
+          }
+        >
           Home
         </NavLink>
-        <NavLink to="/about" className="sidebar-item">
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
+          }
+        >
           About
         </NavLink>
-        <NavLink to="/projects" className="sidebar-item">
+        <NavLink
+          to="/projects"
+          className={({ isActive }) =>
+            isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
+          }
+        >
           Projects
         </NavLink>
-        <NavLink className="sidebar-item" to="/blog">
+        <NavLink
+          to="/blog"
+          className={({ isActive }) =>
+            isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
+          }
+        >
           Blog
         </NavLink>
         <div className="flex dropdown cursor-pointer">
-          <span
-            className="flex items-center sidebar-item"
+        <span
+            className={`flex items-center sidebar-item ${isDropdownOpen ? 'font-["Sohne-Halbfett"]' : ''}`}
             onClick={toggleDropdown}
           >
             Contact
@@ -65,7 +84,7 @@ const Sidebar = () => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
-              className={`arrow w-6 h-6 ml-1 transition-transform duration-300 ease-in-out transform ${
+              className={`arrow w-6 h-6 ml-1 ${
                 isDropdownOpen ? "rotate-180" : ""
               }`}
             >

@@ -81,8 +81,16 @@
 
 /*sidebar*/
 
+.sidebar {
+  @apply flex justify-between items-center w-full h-auto fixed top-0 bg-white text-black;
+}
+
+.sidebar-logo {
+  @apply block mx-auto w-40 h-12 my-2 text-black;
+}
+
 .sidebar-item {
-  @apply font-['Sohne-Buch'] ml-5 text-[18px] leading-[51px] hover:underline flex items-center;
+  @apply ml-5 text-[18px] leading-[51px] hover:font-['Sohne-Halbfett'] flex items-center;
 }
 
 .dropdown-menu {
@@ -90,7 +98,7 @@
 }
 
 .dropdown-item {
-  @apply font-['Sohne-Buch'] block text-[18px] no-underline py-1 hover:underline;
+  @apply font-['Sohne-Buch'] block text-[18px] no-underline py-1 hover:font-['Sohne-Halbfett'];
 }
 
 .dropdown {
@@ -100,7 +108,7 @@
 /*home*/
 
 .home-content {
-  @apply flex flex-col sm:flex-row min-h-screen overflow-auto items-center justify-center bg-themeBackground text-themeText;
+  @apply flex flex-col sm:flex-row min-h-screen overflow-auto items-center justify-center bg-white text-black;
 }
 
 .home-content-container {
@@ -115,6 +123,10 @@
   @apply object-contain max-h-[40vh] w-1/2;
 }
 
+.home-button {
+  @apply link border-black hover:bg-black hover:text-white;
+}
+
 /*about*/
 
 .about-content {
@@ -126,11 +138,15 @@
 }
 
 .about-section-header {
-  @apply flex flex-col min-h-fit sm:flex-row justify-between pt-[160px] bg-themeBackground text-themeText;
+  @apply flex flex-col min-h-fit sm:flex-row justify-between pt-[160px] bg-white text-black;
 }
 
 .about-section-container {
   @apply flex flex-col items-center mx-[24px];
+}
+
+.about-section-header-container {
+  @apply flex flex-col items-center mx-[24px] pb-[90px];
 }
 
 .about-section-text-area {
@@ -147,7 +163,7 @@
 }
 
 .blog-landing-header {
-  @apply flex flex-col sm:flex-row pt-[160px] bg-themeBackground text-themeText;
+  @apply flex flex-col sm:flex-row pt-[160px] bg-white text-black;
 }
 
 .blog-landing-header-container {
@@ -177,7 +193,7 @@
 }
 
 .blog-post-header {
-  @apply flex flex-col min-h-fit sm:flex-row bg-themeBackground text-themeText;
+  @apply flex flex-col min-h-fit sm:flex-row bg-white text-black;
 }
 
 .blog-post-header-container {

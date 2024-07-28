@@ -1,15 +1,18 @@
-import Sidebar from "./Sidebar";
-import { Outlet } from "react-router-dom";
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Sidebar from './Sidebar';
+import PageTransition from './PageTransition';
 
 const Layout = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <div> 
-        <Sidebar/>
-      </div>
-      <div>
-        <Outlet />
-      </div>
+      
+      <PageTransition>
+      <Sidebar />
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+      </PageTransition>
     </div>
   );
 };
