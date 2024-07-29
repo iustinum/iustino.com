@@ -67,6 +67,14 @@ const Sidebar = ({ currentPath }) => {
           Projects
         </NavLink>
         <NavLink
+          to="/art"
+          className={({ isActive }) =>
+            isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
+          }
+        >
+          Art
+        </NavLink>
+        <NavLink
           to="/blog"
           className={({ isActive }) =>
             isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"

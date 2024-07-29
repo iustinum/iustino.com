@@ -4,8 +4,10 @@ import { AnimatePresence } from 'framer-motion';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
+import Projects from './pages/Projects';
 import BlogLanding from './pages/blog/BlogLanding';
 import BlogPost from './pages/blog/BlogPost';
+import Art from './pages/Art';
 
 function App() {
   const location = useLocation();
@@ -18,6 +20,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<BlogLanding />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/art" element={<Art />} />
+          <Route path="/projects" element={<Projects />} />
         </Route>
       </Routes>
     </AnimatePresence>
