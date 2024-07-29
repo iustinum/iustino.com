@@ -8,6 +8,7 @@ import Projects from './pages/Projects';
 import BlogLanding from './pages/blog/BlogLanding';
 import BlogPost from './pages/blog/BlogPost';
 import Art from './pages/Art';
+import AlbumView from './components/AlbumView';
 
 function App() {
   const location = useLocation();
@@ -18,10 +19,11 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/blog" element={<BlogLanding />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/art" element={<Art />} />
-          <Route path="/projects" element={<Projects />} />
+          <Route path="/art/:albumName" element={<AlbumView />} />
         </Route>
       </Routes>
     </AnimatePresence>
