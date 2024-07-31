@@ -90,7 +90,7 @@
 }
 
 .sidebar-item {
-  @apply ml-5 text-[18px] leading-[51px] hover:font-['Sohne-Halbfett'] flex items-center;
+  @apply ml-5 text-[16px] leading-[51px] hover:font-['Sohne-Halbfett'] flex items-center;
 }
 
 .dropdown-menu {
@@ -98,7 +98,7 @@
 }
 
 .dropdown-item {
-  @apply font-['Sohne-Buch'] block text-[18px] no-underline py-1 hover:font-['Sohne-Halbfett'];
+  @apply font-['Sohne-Buch'] block text-[16px] no-underline py-1 hover:font-['Sohne-Halbfett'];
 }
 
 .dropdown {

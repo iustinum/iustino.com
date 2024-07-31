@@ -48,7 +48,7 @@ const Sidebar = ({ currentPath }) => {
             isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
           }
         >
-          Home
+          HOME
         </NavLink>
         <NavLink
           to="/about"
@@ -56,7 +56,7 @@ const Sidebar = ({ currentPath }) => {
             isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
           }
         >
-          About
+          ABOUT
         </NavLink>
         <NavLink
           to="/projects"
@@ -64,15 +64,15 @@ const Sidebar = ({ currentPath }) => {
             isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
           }
         >
-          Projects
+          PROJECTS
         </NavLink>
         <NavLink
-          to="/art"
+          to="/gallery"
           className={({ isActive }) =>
             isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
           }
         >
-          Art
+          GALLERY
         </NavLink>
         <NavLink
           to="/blog"
@@ -80,14 +80,14 @@ const Sidebar = ({ currentPath }) => {
             isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
           }
         >
-          Blog
+          BLOG
         </NavLink>
         <div className="flex dropdown cursor-pointer">
         <span
             className={`flex items-center sidebar-item ${isDropdownOpen ? 'font-["Sohne-Halbfett"]' : ''}`}
             onClick={toggleDropdown}
           >
-            Contact
+            CONTACT
             <svg
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
