@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fetchManifest, getImageUrl } from '../utils/imageManifest';
 
-//TODO: Lots of repetition with AlbumDetails, need refactoring
 const AlbumGallery = () => {
   const [albums, setAlbums] = useState([]);
   const [hoveredAlbum, setHoveredAlbum] = useState(null);
@@ -11,11 +10,9 @@ const AlbumGallery = () => {
   const [albumDates, setAlbumDates] = useState({});
   const [defaultImage, setDefaultImage] = useState(null);
 
-  //sorting
   const [sortBy, setSortBy] = useState("date");
   const [sortOrder, setSortOrder] = useState("desc");
   const [hoveredSort, setHoveredSort] = useState(null);
-  
 
   useEffect(() => {
     fetchAlbums();
@@ -24,7 +21,6 @@ const AlbumGallery = () => {
   const fetchAlbums = async () => {
     try {
       const manifest = await fetchManifest();
-      console.log('new manifest', manifest);
       
       const albumsData = manifest.map(album => ({
         name: album.name,
@@ -35,18 +31,43 @@ const AlbumGallery = () => {
 
       const images = {};
       const dates = {};
+      let globalDefaultImage = null;
+      let mostRecentAlbum = null;
+
       for (const album of manifest) {
         if (album.images.length > 0) {
-          const coverImage = album.images.find(path => path.endsWith("cover.jpg")) || album.images[0];
-          images[album.name] = getImageUrl(coverImage);
+          const defaultImagePath = album.images.find(path => path.endsWith("default.jpg"));
+          const coverImagePath = album.images.find(path => path.endsWith("cover.jpg"));
+          
+          // Use default.jpg if it's the only image or if there's no cover.jpg
+          if (defaultImagePath && (!coverImagePath || album.images.length === 1)) {
+            images[album.name] = getImageUrl(defaultImagePath);
+          } else {
+            images[album.name] = getImageUrl(coverImagePath || album.images[0]);
+          }
+
           dates[album.name] = album.date ? new Date(album.date) : null;
+
+          // Set global default image if not already set
+          if (defaultImagePath && !globalDefaultImage) {
+            globalDefaultImage = getImageUrl(defaultImagePath);
+          }
+
+          // Keep track of the most recent album
+          if (!mostRecentAlbum || (dates[album.name] && dates[album.name] > dates[mostRecentAlbum])) {
+            mostRecentAlbum = album.name;
+          }
         }
       }
+
       setAlbumImages(images);
       setAlbumDates(dates);
 
-      if (manifest.length > 0 && images[manifest[0].name]) {
-        setDefaultImage(images[manifest[0].name]);
+      // Set the default image for the gallery
+      if (globalDefaultImage) {
+        setDefaultImage(globalDefaultImage);
+      } else if (mostRecentAlbum && images[mostRecentAlbum]) {
+        setDefaultImage(images[mostRecentAlbum]);
       }
     } catch (error) {
       console.error("Failed to fetch albums:", error);
@@ -66,11 +87,9 @@ const AlbumGallery = () => {
     return name.replace(/-/g, ' ').toUpperCase();
   };
 
-  // Sorting
   const sortAlbums = (albums, sortBy, sortOrder) => {
     return [...albums].sort((a, b) => {
       if (sortBy === "name") {
-        // Name sorting remains the same
         return sortOrder === "asc"
           ? a.name.localeCompare(b.name)
           : b.name.localeCompare(a.name);

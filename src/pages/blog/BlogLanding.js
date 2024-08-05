@@ -44,23 +44,14 @@ const BlogLanding = () => {
 
   return (
     <div className="blog-landing-content">
-      <div className="blog-landing-header">
-        <div className="blog-landing-header-container">
-          <div className="blog-section-text-area ">
-            {/* <h1 className="title">Blog</h1> */}
-          </div>
-        </div>
-      </div>
 
       {posts.map((post, index) => (
         <div
           key={post.slug}
-          className={`blog-section pt-[90px] justify-center ${
-            index === posts.length - 1 ? "mb-[90px]" : ""
-          }`}
+          className="blog-landing-section"
         >
-          <div className="blog-section-container border-t border-black pt-8 w-full">
-            <div className="blog-section-text-area mr-16">
+          <div className="blog-landing-section-container">
+            <div className="blog-landing-section-text-area">
               <Link
                 to={`/blog/${post.slug}`}
                 className="title-2 pb-8 hover:underline"
@@ -68,11 +59,11 @@ const BlogLanding = () => {
                 <h2>{post.title}</h2>
               </Link>
               <p className="text-[18px] mb-8 font-bold">{post.date}</p>
-              <p className="text-[18px] mb-8">{post.subtitle}</p>
+              <p className="text-[18px] mb-8 ">{post.subtitle}</p>
             </div>
             {post.image && (
               <img
-                className="blog-landing-image ml-8"
+                className="blog-landing-image "
                 src={post.image}
                 alt={post.title}
               />
