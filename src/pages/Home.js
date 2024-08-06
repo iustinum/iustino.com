@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import photo from "../assets/images/homepage-image.jpg";
+import photo from "../assets/images/home-image.jpg";
 import { motion as m, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 

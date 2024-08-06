@@ -8,9 +8,11 @@
 
 Welcome to my corner of the internet.
 
-I built this website from scratch using React and Tailwind CSS. It will be where I showcase my creative work. I want to use this website to document my learnings and discoveries. I hope this website encourages me to read more books and papers, consolidating my knowledge by explaining it in my own words.
+I built this website from scratch using React and Tailwind CSS. Check out the repo: https://github.com/iustinum/iustino.com
 
-I hope that through writing, I can learn to organize my thoughts better. Programming, after all, is about organizing thoughts and translating them into code.
+It will be where I showcase my creative work and document my learnings. I hope this website encourages me to create more.
+
+I hope that through writing and presenting, I can learn to organize my thoughts better. Programming, after all, is about organizing thoughts and translating them into code.
 
 Lastly, some acknowledgments:
 - All photos on this website are my own.

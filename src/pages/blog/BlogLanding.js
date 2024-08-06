@@ -44,12 +44,8 @@ const BlogLanding = () => {
 
   return (
     <div className="blog-landing-content">
-
       {posts.map((post, index) => (
-        <div
-          key={post.slug}
-          className="blog-landing-section"
-        >
+        <div key={post.slug} className="blog-landing-section">
           <div className="blog-landing-section-container">
             <div className="blog-landing-section-text-area">
               <Link
@@ -62,11 +58,12 @@ const BlogLanding = () => {
               <p className="text-[18px] mb-8 ">{post.subtitle}</p>
             </div>
             {post.image && (
-              <img
-                className="blog-landing-image "
-                src={post.image}
-                alt={post.title}
-              />
+              <div className="blog-landing-image-container">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                />
+              </div>
             )}
           </div>
         </div>
