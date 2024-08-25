@@ -45,7 +45,7 @@ const AlbumGallery = () => {
   };
 
   return (
-    <div className="container mx-auto px-16 py-32">
+    <div className="container mx-auto px-16 py-32 overflow-y-auto min-h-screen">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {albums.map((album) => (
           <Link

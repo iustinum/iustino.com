@@ -50,7 +50,7 @@
   }
 
   body {
-    @apply leading-snug font-['Sohne-Buch'] text-black bg-white overflow-auto antialiased;
+    @apply leading-snug font-['Sohne-Buch'] text-black bg-white overflow-y-auto antialiased;
   }
 }
 
@@ -78,7 +78,7 @@
 /*sidebar*/
 
 .sidebar {
-  @apply flex justify-between items-center w-full fixed bg-white py-2;
+  @apply flex justify-between items-center w-full fixed bg-white py-2 z-50;
 }
 
 .sidebar-logo {
@@ -184,7 +184,7 @@
 /*about*/
 
 .about-content {
-  @apply flex flex-col overflow-auto items-center justify-center min-h-screen px-16;
+  @apply flex flex-col overflow-y-auto items-center justify-start min-h-screen px-16;
 }
 
 .about-section {
