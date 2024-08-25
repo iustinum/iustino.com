@@ -1,7 +1,7 @@
+import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
 
-const Sidebar = ({ currentPath }) => {
+const Sidebar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -11,6 +11,11 @@ const Sidebar = ({ currentPath }) => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    if (!isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   };
 
   useEffect(() => {
@@ -18,14 +23,25 @@ const Sidebar = ({ currentPath }) => {
       if (!event.target.closest(".dropdown") && !event.target.closest(".mobile-menu") && !event.target.closest(".hamburger-icon")) {
         setIsDropdownOpen(false);
         setIsMobileMenuOpen(false);
+        document.body.style.overflow = 'auto';
+      }
+    };
+
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+        document.body.style.overflow = 'auto';
       }
     };
 
     document.addEventListener("click", handleClickOutside);
+    window.addEventListener("resize", handleResize);
+
     return () => {
       document.removeEventListener("click", handleClickOutside);
+      window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [isMobileMenuOpen]);
 
   const NavItems = () => (
     <>
@@ -107,7 +123,7 @@ const Sidebar = ({ currentPath }) => {
   );
 
   return (
-    <div>
+    <>
       <div className="sidebar">
         <Link to="/">
           <img 
@@ -119,7 +135,7 @@ const Sidebar = ({ currentPath }) => {
         <nav className="hidden md:flex mr-[16px]">
           <NavItems />
         </nav>
-        <div className="hamburger-container">
+        <div className="hamburger-container md:hidden">
           <button
             className={`hamburger-icon ${isMobileMenuOpen ? "open" : ""}`}
             onClick={toggleMobileMenu}
@@ -131,11 +147,15 @@ const Sidebar = ({ currentPath }) => {
           </button>
         </div>
       </div>
-      <div className={`mobile-menu md:hidden ${isMobileMenuOpen ? 'active' : ''}`}>
-        <NavItems />
-      </div>
-    </div>
-  );;
+      {isMobileMenuOpen && (
+        <div className="mobile-menu-overlay">
+          <div className="mobile-menu">
+            <NavItems />
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default Sidebar;

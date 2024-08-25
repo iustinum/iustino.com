@@ -78,7 +78,7 @@
 /*sidebar*/
 
 .sidebar {
-  @apply flex justify-between items-center w-full fixed;
+  @apply flex justify-between items-center w-full fixed bg-white py-2;
 }
 
 .sidebar-logo {
@@ -101,34 +101,33 @@
   @apply relative;
 }
 
-/* New mobile menu styles */
-.mobile-menu {
-  @apply fixed top-[70px] left-0 right-0 bg-white shadow-md max-h-0 overflow-hidden transition-all duration-300 ease-in-out;
-}
+/* Mobile menu styles */
+/* Updated mobile menu styles */
 
-.mobile-menu.active {
-  @apply max-h-screen;
+.mobile-menu {
+  @apply fixed top-0 left-0 right-0 bottom-0 bg-white overflow-y-auto z-40 flex flex-col justify-center items-center;
+  padding: 2rem;
 }
 
 .mobile-menu .sidebar-item {
-  @apply block py-3 px-16 border-b border-gray-200;
+  @apply px-4 py-2 text-2xl font-['Sohne-Buch'] hover:font-['Sohne-Halbfett'] w-full text-center;
 }
 
 .mobile-menu .dropdown {
-  @apply static;
+  @apply w-full flex;
 }
 
 .mobile-menu .dropdown-menu {
-  @apply static w-full shadow-none;
+  @apply static w-full flex mt-2;
 }
 
 .mobile-menu .dropdown-item {
-  @apply py-2 px-20 border-b border-gray-100;
+  @apply py-2 px-4 text-xl text-center;
 }
 
 /* Hamburger icon container */
 .hamburger-container {
-  @apply flex justify-end items-center pr-16 md:hidden;
+  @apply flex justify-end items-center pr-4 md:hidden z-50;
 }
 
 /* Hamburger icon */
@@ -289,3 +288,5 @@
 .blog-post-body-container {
   @apply border-t border-black;
 }
+
+
