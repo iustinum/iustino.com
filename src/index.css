@@ -85,44 +85,44 @@
   @apply w-[144.8px] h-[43.71px] object-contain;
 }
 
+/* Ensure the dropdown doesn't affect layout */
 .sidebar-item {
-  @apply ml-5 text-[16px] leading-[51px] hover:font-['Sohne-Halbfett'] flex items-center;
-}
-
-.dropdown-menu {
-  @apply absolute top-full w-max;
-}
-
-.dropdown-item {
-  @apply font-['Sohne-Buch'] block text-[16px] no-underline py-1 hover:font-['Sohne-Halbfett'];
+  @apply ml-5 text-[16px] leading-[51px] hover:font-['Sohne-Halbfett'] flex items-center relative;
 }
 
 .dropdown {
   @apply relative;
 }
 
+.dropdown-menu {
+  @apply absolute left-3 w-max;
+}
+
+.dropdown-item {
+  @apply block text-[16px] py-1 px-4 hover:font-['Sohne-Halbfett'];
+}
+
 /* Mobile menu styles */
-/* Updated mobile menu styles */
 
 .mobile-menu {
   @apply fixed top-0 left-0 right-0 bottom-0 bg-white overflow-y-auto z-40 flex flex-col justify-center items-center;
-  padding: 2rem;
 }
 
-.mobile-menu .sidebar-item {
-  @apply px-4 py-2 text-2xl font-['Sohne-Buch'] hover:font-['Sohne-Halbfett'] w-full text-center;
+.mobile-menu .sidebar-item,
+.mobile-menu .dropdown > span {
+  @apply px-4 py-2 text-2xl font-['Sohne-Buch'] hover:font-['Sohne-Halbfett'] mx-auto;
 }
 
 .mobile-menu .dropdown {
-  @apply w-full flex;
+  @apply w-full flex flex-col items-center;
 }
 
 .mobile-menu .dropdown-menu {
-  @apply static w-full flex mt-2;
+  @apply w-full flex flex-col items-center mt-2;
 }
 
 .mobile-menu .dropdown-item {
-  @apply py-2 px-4 text-xl text-center;
+  @apply py-2 px-4 text-xl;
 }
 
 /* Hamburger icon container */
@@ -162,23 +162,32 @@
 /*home*/
 
 .home-content {
-  @apply flex flex-col sm:flex-row min-h-screen overflow-auto items-center justify-center px-16;
+  @apply flex flex-col min-h-screen overflow-auto items-center justify-center px-16;
 }
 
 .home-content-container {
-  @apply flex flex-col sm:flex-row justify-between my-28;
+  @apply flex flex-col items-center justify-center my-8 sm:my-16 w-full max-w-4xl;
 }
 
 .home-content-text-area {
-  @apply flex flex-col mb-8;
+  @apply flex flex-col w-full mb-8;
+}
+
+.text-container {
+  @apply w-full sm:w-2/3 mx-auto;
+}
+
+.title,
+.title-3 {
+  @apply text-left;
 }
 
 .home-content-image {
-  @apply object-contain max-h-[40vh] w-1/2;
+  @apply object-contain max-h-[40vh] w-full sm:w-2/3 mt-8;
 }
 
 .home-button {
-  @apply link border-black hover:bg-black hover:text-white;
+  @apply link border-black hover:bg-black hover:text-white mt-8;
 }
 
 /*about*/
@@ -251,7 +260,7 @@
 /*blog post*/
 
 .blog-post-content {
-  @apply flex flex-col items-center justify-center min-h-screen w-full;
+  @apply flex flex-col items-center min-h-screen w-full;
 }
 
 .blog-post-header,
@@ -289,4 +298,18 @@
   @apply border-t border-black;
 }
 
+/* Scrollbar management */
+html {
+  overflow-y: scroll;
+}
 
+body {
+  overflow: hidden;
+  animation: showOverflow 0s 0.1s forwards;
+}
+
+@keyframes showOverflow {
+  to {
+    overflow: auto;
+  }
+}

@@ -7,19 +7,23 @@ const About = () => {
             <h2 className="title-2 pb-8">Bio</h2>
             <div>
               <p className="text-[18px] mb-8">
-                Hi. I'm Justin, a CS and Business major at UC Berkeley. My
-                interests range from software development to financial
-                engineering. I also have a strong fascination with data science
-                and its application across various fields, particularly within
+                I am a fourth-year undergraduate at UC Berkeley majoring in
+                Computer Science and Business Administration. I am interested in
+                algorithm design, information theory, graph theory, and
                 cybersecurity.
               </p>
               <p className="text-[18px] mb-8">
-                I used to swim competitively and have entertained with the idea
-                of becoming a professional swimmer. Currently, I run and swim to
-                stay fit. I also like to try out new tech frameworks and work on
-                my own projects. My most recent projects use Go and TypeScript.
-                I'm also experimenting with Rust. Besides tech, I enjoy
-                photography and experimenting with sound designs.
+                More recently, I interned at SpecterOps, where I{" "}
+                <a
+                  href="https://github.com/SpecterOps/BloodHound/pulls?q=is%3Apr+assignee%3Aiustinum+is%3Aclosed"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-black decoration-1 underline-offset-2 
+               hover:bg-black hover:text-white transition-colors duration-300"
+                >
+                  debugged and prototyped a new data ingestion pipeline for the
+                  Go backend of popular security tool Bloodhound Enterprise.
+                </a>
               </p>
             </div>
           </div>

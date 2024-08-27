@@ -10,27 +10,35 @@ const Sidebar = () => {
   };
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    if (!isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    setIsMobileMenuOpen((prevState) => {
+      const newState = !prevState;
+      if (newState) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+        setIsDropdownOpen(false); // Close dropdown when closing mobile menu
+      }
+      return newState;
+    });
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (!event.target.closest(".dropdown") && !event.target.closest(".mobile-menu") && !event.target.closest(".hamburger-icon")) {
+      if (
+        !event.target.closest(".dropdown") &&
+        !event.target.closest(".mobile-menu") &&
+        !event.target.closest(".hamburger-icon")
+      ) {
         setIsDropdownOpen(false);
-        setIsMobileMenuOpen(false);
-        document.body.style.overflow = 'auto';
+        if (isMobileMenuOpen) {
+          toggleMobileMenu();
+        }
       }
     };
 
     const handleResize = () => {
       if (window.innerWidth >= 768 && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
-        document.body.style.overflow = 'auto';
+        toggleMobileMenu();
       }
     };
 
@@ -40,6 +48,7 @@ const Sidebar = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
       window.removeEventListener("resize", handleResize);
+      document.body.style.overflow = "auto"; // Reset on unmount
     };
   }, [isMobileMenuOpen]);
 
@@ -59,7 +68,7 @@ const Sidebar = () => {
         className={({ isActive }) =>
           isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
         }
-        onClick={() => setIsMobileMenuOpen(false)}
+        onClick={toggleMobileMenu}
       >
         ABOUT
       </NavLink>
@@ -68,7 +77,7 @@ const Sidebar = () => {
         className={({ isActive }) =>
           isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
         }
-        onClick={() => setIsMobileMenuOpen(false)}
+        onClick={toggleMobileMenu}
       >
         PROJECTS
       </NavLink>
@@ -77,7 +86,7 @@ const Sidebar = () => {
         className={({ isActive }) =>
           isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
         }
-        onClick={() => setIsMobileMenuOpen(false)}
+        onClick={toggleMobileMenu}
       >
         GALLERY
       </NavLink>
@@ -86,13 +95,15 @@ const Sidebar = () => {
         className={({ isActive }) =>
           isActive ? "sidebar-item font-['Sohne-Halbfett']" : "sidebar-item"
         }
-        onClick={() => setIsMobileMenuOpen(false)}
+        onClick={toggleMobileMenu}
       >
         BLOG
       </NavLink>
       <div className="dropdown cursor-pointer">
         <span
-          className={`flex items-center sidebar-item ${isDropdownOpen ? 'font-["Sohne-Halbfett"]' : ''}`}
+          className={`flex items-center sidebar-item ${
+            isDropdownOpen ? 'font-["Sohne-Halbfett"]' : ""
+          }`}
           onClick={toggleDropdown}
         >
           CONTACT
@@ -112,10 +123,34 @@ const Sidebar = () => {
         </span>
         {isDropdownOpen && (
           <div className="dropdown-menu">
-            <Link className="dropdown-item" to="https://www.linkedin.com/in/juwu/" target="_blank">LinkedIn</Link>
-            <Link className="dropdown-item" to="https://github.com/iustinum" target="_blank">GitHub</Link>
-            <Link className="dropdown-item" to="https://twitter.com/_justinwu" target="_blank">Twitter</Link>
-            <Link className="dropdown-item" to="https://news.ycombinator.com/user?id=wuj" target="_blank">HN</Link>
+            <Link
+              className="dropdown-item"
+              to="https://www.linkedin.com/in/juwu/"
+              target="_blank"
+            >
+              LinkedIn
+            </Link>
+            <Link
+              className="dropdown-item"
+              to="https://github.com/iustinum"
+              target="_blank"
+            >
+              GitHub
+            </Link>
+            <Link
+              className="dropdown-item"
+              to="https://twitter.com/_justinwu"
+              target="_blank"
+            >
+              Twitter
+            </Link>
+            <Link
+              className="dropdown-item"
+              to="https://news.ycombinator.com/user?id=wuj"
+              target="_blank"
+            >
+              HN
+            </Link>
           </div>
         )}
       </div>
@@ -126,8 +161,8 @@ const Sidebar = () => {
     <>
       <div className="sidebar">
         <Link to="/">
-          <img 
-            src="/assets/images/logo2.png" 
+          <img
+            src="/assets/images/logo2.png"
             alt="JWU"
             className="sidebar-logo"
           />

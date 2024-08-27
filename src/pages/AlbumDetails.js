@@ -52,7 +52,9 @@ const AlbumDetails = () => {
                     {imageData.imageCaption}
                   </p>
                 )}
-                <p className="text-lg md:text-xl mb-1">{imageData.formattedTime}</p>
+                <p className="text-lg md:text-xl mb-1">
+                  {imageData.formattedTime}
+                </p>
                 <p className="text-lg md:text-xl mb-1">{imageData.camera}</p>
                 <p className="text-lg md:text-xl mb-1">{imageData.lens}</p>
                 <p className="text-lg md:text-xl mb-4">

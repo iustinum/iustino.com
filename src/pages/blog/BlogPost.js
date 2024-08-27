@@ -16,7 +16,10 @@ const BlogPost = () => {
         const markdownContent = await response.text();
 
         const parsedHtml = parseMarkdown(markdownContent);
-        const [postData, parsedComponents] = parseHtml(parsedHtml, markdownContent);
+        const [postData, parsedComponents] = parseHtml(
+          parsedHtml,
+          markdownContent
+        );
 
         setPost(postData);
         setComponents(parsedComponents);
