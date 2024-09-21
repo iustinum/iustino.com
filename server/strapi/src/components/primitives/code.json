@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_primitives_codes",
+  "info": {
+    "displayName": "Code",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

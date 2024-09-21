@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_primitives_text_blocks",
+  "info": {
+    "displayName": "Text Block",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

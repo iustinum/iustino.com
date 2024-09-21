@@ -1,25 +1,61 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
+# Dependencies
+node_modules
+.pnp
 .pnp.js
 
-# testing
-/coverage
+# Environment variables
+.env*
+!.env.example
 
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-.env
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode
+.idea
+
+# Temporary files
+*.tmp
+*.swp
+
+# Build directories
+/client/build
+/server/strapi/build
+/server/strapi/.cache
+/server/strapi/.tmp
+/server/strapi/dist
+
+# Testing
+/client/coverage
+
+# Strapi specific
+/server/strapi/.strapi-updater.json
+/server/strapi/.strapi-cloud.json
+/server/strapi/exports
+/server/strapi/license.txt
+/server/strapi/.strapi
+
+# Strapi uploads (if not using cloud storage)
+/server/strapi/public/uploads/*
+!/server/strapi/public/uploads/.gitkeep
+
+# Misc
+*.sqlite
+*.sqlite3
+*.csv
+*.dat
+*.out
+*.pid
+lcov.info
+lib-cov
+pids
+
+build/

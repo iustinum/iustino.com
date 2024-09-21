@@ -1,63 +1,16 @@
 {
-  "name": "iustino.com",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@emailjs/browser": "^4.3.3",
-    "@fortawesome/free-brands-svg-icons": "^6.5.2",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "animate.css": "^4.1.1",
-    "aws-sdk": "^2.1665.0",
-    "exif-js": "^2.3.0",
-    "exif-reader": "^2.0.1",
-    "express": "^4.19.2",
-    "framer-motion": "^11.1.7",
-    "front-matter": "^4.0.2",
-    "gsap-trial": "^3.12.5",
-    "html-react-parser": "^5.1.12",
-    "loaders.css": "^0.1.2",
-    "marked": "^12.0.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-leaflet": "^4.2.1",
-    "react-loaders": "^3.0.1",
-    "react-markdown": "^9.0.1",
-    "react-router-dom": "^6.22.3",
-    "react-scripts": "5.0.1",
-    "react-transition-group": "^4.4.5",
-    "sass": "^1.75.0",
-    "web-vitals": "^2.1.4"
-  },
+  "name": "iustino-com",
+  "version": "1.0.0",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "client": "cd client && npm start",
+    "server": "cd server && npm run dev:all",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1",
-    "tailwindcss": "^3.4.3"
+    "concurrently": "^9.0.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "react-syntax-highlighter": "^15.5.0"
   }
 }

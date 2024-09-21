@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_composites_image_grids",
+  "info": {
+    "displayName": "Image Grid",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "primitives.image"
+    }
+  }
+}
