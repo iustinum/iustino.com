@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchBlogPosts } from "../../services/blogService";
+import { parseISO, format } from "date-fns";
 
 const BlogList = () => {
   const [posts, setPosts] = useState([]);
@@ -11,7 +12,10 @@ const BlogList = () => {
     const loadPosts = async () => {
       try {
         const response = await fetchBlogPosts();
-        setPosts(response.data);
+        const sortedPosts = response.data.sort((a, b) => {
+          return parseISO(b.attributes.publishDate) - parseISO(a.attributes.publishDate);
+        });
+        setPosts(sortedPosts);
         setIsLoading(false);
       } catch (error) {
         console.error("Failed to fetch blog posts:", error);
@@ -32,8 +36,7 @@ const BlogList = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">Blog Posts</h1>
+    <div className="container mx-auto px-4 py-28">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post) => (
           <div
@@ -54,12 +57,12 @@ const BlogList = () => {
                 {post.attributes.title}
               </h2>
               <p className="text-gray-600 mb-4">
-                {post.attributes.publishDate}
+                {format(parseISO(post.attributes.publishDate), "MMM d, yyyy")}
               </p>
               <p className="text-gray-700 mb-4">{post.attributes.excerpt}</p>
               <Link
                 to={`/blog/${post.attributes.slug}`}
-                className="text-blue-500 hover:underline"
+                className="underline decoration-black decoration-1 underline-offset-2 hover:bg-black hover:text-white transition-colors duration-300"
               >
                 Read more
               </Link>

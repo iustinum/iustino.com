@@ -2,12 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-.debug-text {
-  color: red !important;
-  font-size: 24px !important;
-  border: 3px solid blue !important;
-}
-
+/* Font Definitions */
 @font-face {
   font-family: "Sohne-Halbfett";
   src: url("./assets/fonts/Sohne-Font-Family/Söhne-Font-Family-Collection/Test Söhne/TestSöhne-Halbfett.otf")
@@ -39,50 +34,43 @@
 }
 
 @font-face {
-  font-family: "SohneBreit-Buch";
-  src: url("./assets/fonts/KlimTestFonts/Test desktop fonts (OTF)/Test Söhne Collection/Test Söhne Breit/TestSöhneBreit-Buch.otf")
-    format("opentype");
-}
-
-@font-face {
   font-family: "MartinaPlantijn-Regular";
   src: url("./assets/fonts/KlimTestFonts/Test desktop fonts (OTF)/Test Martina Plantijn/TestMartinaPlantijn-Regular.otf")
     format("opentype");
 }
 
+/* Base Styles */
 @layer base {
+
   html {
-    font-size: 62.5%;
+    font-family: 'Sohne-Buch', 'Helvetica';
   }
 
   body {
-    @apply leading-snug font-['Sohne-Buch'] text-black bg-white overflow-y-auto antialiased;
+    @apply leading-snug text-black overflow-y-auto antialiased;
   }
 }
 
-/*global*/
-.title {
-  @apply font-['Sohne-Halbfett'] text-[73px] leading-none;
+/* Other Global Styles */
+.debug-text {
+  color: red !important;
+  font-size: 24px !important;
+  border: 3px solid blue !important;
 }
 
 .title-2 {
-  @apply text-[48px] leading-none font-['Sohne-Halbfett'];
+  @apply text-5xl leading-none font-['Sohne-Halbfett'];
 }
 
 .title-3 {
   @apply mt-5 text-[28px] leading-none pb-8 font-['Sohne-Buch'];
 }
 
-.date {
-  @apply mt-5 text-[24px] leading-none pb-8 font-['Sohne-Halbfett'];
-}
-
 .link {
   @apply font-['Sohne-Buch'] text-[18px] px-[12px] py-[8px] border w-fit;
 }
 
-/*sidebar*/
-
+/* Sidebar Styles */
 .sidebar {
   @apply flex justify-between items-center w-full fixed bg-white py-2 z-50;
 }
@@ -91,7 +79,6 @@
   @apply w-[144.8px] h-[43.71px] object-contain;
 }
 
-/* Ensure the dropdown doesn't affect layout */
 .sidebar-item {
   @apply ml-5 text-[16px] leading-[51px] hover:font-['Sohne-Halbfett'] flex items-center relative;
 }
@@ -108,8 +95,7 @@
   @apply block text-[16px] py-1 px-4 hover:font-['Sohne-Halbfett'];
 }
 
-/* Mobile menu styles */
-
+/* Mobile Menu Styles */
 .mobile-menu {
   @apply fixed top-0 left-0 right-0 bottom-0 bg-white overflow-y-auto z-40 flex flex-col justify-center items-center;
 }
@@ -131,12 +117,11 @@
   @apply py-2 px-4 text-xl;
 }
 
-/* Hamburger icon container */
+/* Hamburger Icon Styles */
 .hamburger-container {
   @apply flex justify-end items-center pr-4 md:hidden z-50;
 }
 
-/* Hamburger icon */
 .hamburger-icon {
   @apply w-8 h-8 flex flex-col justify-center items-center cursor-pointer relative;
 }
@@ -165,43 +150,8 @@
   @apply -rotate-45 translate-y-0;
 }
 
-/*home*/
 
-.home-content {
-  @apply flex flex-col min-h-screen overflow-auto items-center justify-center px-16;
-}
-
-.home-content-container {
-  @apply flex flex-col items-center justify-center my-8 sm:my-16 w-full max-w-4xl;
-}
-
-.home-content-text-area {
-  @apply flex flex-col w-full mb-8;
-}
-
-.text-container {
-  @apply w-full sm:w-2/3 mx-auto;
-}
-
-.title,
-.title-3 {
-  @apply text-left;
-}
-
-.home-content-image {
-  @apply object-contain max-h-[40vh] w-full sm:w-2/3 mt-8;
-}
-
-.home-button {
-  @apply link border-black hover:bg-black hover:text-white mt-8;
-}
-
-/*about*/
-
-.about-content {
-  @apply flex flex-col overflow-y-auto items-center justify-start min-h-screen px-16;
-}
-
+/* About Page Styles */
 .about-section {
   @apply w-full max-w-4xl mx-auto pt-[90px];
 }
@@ -226,7 +176,7 @@
   @apply flex flex-col w-full justify-center items-start;
 }
 
-/*blog landing*/
+/* Blog Landing Page Styles */
 .blog-landing-content {
   @apply flex flex-col overflow-auto items-center px-16 pt-[90px];
 }
@@ -263,48 +213,7 @@
   @apply w-full h-auto object-cover max-w-full;
 }
 
-/*blog post*/
-
-.blog-post-content {
-  @apply flex flex-col items-center min-h-screen w-full;
-}
-
-.blog-post-header,
-.blog-post-body {
-  @apply w-full max-w-4xl mx-auto px-16;
-}
-
-@screen lg {
-  .blog-post-header,
-  .blog-post-body {
-    @apply max-w-5xl;
-  }
-}
-
-@screen xl {
-  .blog-post-header,
-  .blog-post-body {
-    @apply max-w-6xl;
-  }
-}
-
-.blog-post-header {
-  @apply pt-[90px] mb-[60px];
-}
-
-.blog-post-header-text-area {
-  @apply flex flex-col w-full;
-}
-
-.blog-post-cover {
-  @apply object-cover w-full mt-8 max-h-[50vh];
-}
-
-.blog-post-body-container {
-  @apply border-t border-black;
-}
-
-/* Scrollbar management */
+/* Scrollbar Management */
 html {
   overflow-y: scroll;
 }
