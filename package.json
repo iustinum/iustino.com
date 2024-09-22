@@ -7,7 +7,9 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "npm run build:client && npm run build:server",
     "build:client": "cd client && npm install && npm run build",
-    "build:server": "cd api && npm install && cd strapi && NODE_ENV=production npm run build",
+    "build:server": "cd api && npm install && npm run build:express && npm run build:strapi",
+    "build:express": "cd express && npm install",
+    "build:strapi": "cd strapi && NODE_ENV=production npm run build",
     "start": "cd api && NODE_ENV=production npm start"
   },
   "devDependencies": {

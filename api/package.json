@@ -17,7 +17,8 @@
     "better-sqlite3": "8.6.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "http-proxy-middleware": "^3.0.2"
+    "http-proxy-middleware": "^3.0.2",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "concurrently": "^9.0.1",
