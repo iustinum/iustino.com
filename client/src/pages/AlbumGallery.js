@@ -7,24 +7,24 @@ const AlbumGallery = () => {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
+    const fetchAlbums = async () => {
+      try {
+        const manifest = await fetchManifest();
+
+        const albumsData = manifest.map((album) => ({
+          title: album.albumTitle,
+          lastUpdated: album.lastUpdated,
+          coverImage: getAlbumCoverImage(album),
+        }));
+
+        setAlbums(albumsData);
+      } catch (error) {
+        console.error("Failed to fetch albums:", error);
+      }
+    };
+
     fetchAlbums();
   }, []);
-
-  const fetchAlbums = async () => {
-    try {
-      const manifest = await fetchManifest();
-
-      const albumsData = manifest.map((album) => ({
-        title: album.albumTitle,
-        lastUpdated: album.lastUpdated,
-        coverImage: getAlbumCoverImage(album),
-      }));
-
-      setAlbums(albumsData);
-    } catch (error) {
-      console.error("Failed to fetch albums:", error);
-    }
-  };
 
   const getAlbumCoverImage = (album) => {
     const imageKeys = Object.keys(album.images);
