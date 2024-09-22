@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "scripts": {
     "client": "cd client && npm start",
-    "server": "cd server && npm run dev:all",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "server": "cd api && NODE_ENV=development npm run dev:all",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd client && npm install && npm run build",
+    "build:server": "cd api && npm install && cd strapi && NODE_ENV=production npm run build",
+    "start": "cd api && NODE_ENV=production npm start"
   },
   "devDependencies": {
     "concurrently": "^9.0.1"

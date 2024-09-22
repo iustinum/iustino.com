@@ -5,6 +5,7 @@ require('dotenv').config({ path: '../.env' });
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // Create Express app
 const app = express();
@@ -14,7 +15,14 @@ app.use(cors());
 
 // Set up environment variables
 const PORT = process.env.PORT || 3001;
-const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+const STRAPI_URL = process.env.NODE_ENV === 'production' ? '/strapi' : 'http://localhost:1337';
+
+// Proxy Strapi requests
+app.use('/strapi', createProxyMiddleware({ 
+  target: STRAPI_URL,
+  changeOrigin: true,
+  pathRewrite: {'^/strapi' : ''}
+}));
 
 // Endpoint to fetch posts from Strapi
 app.get('/api/posts', async (req, res) => {

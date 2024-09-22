@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    },
+    { "src": "api/express/index.js", "use": "@vercel/node" },
+    { "src": "api/strapi/server.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "api/express/index.js" },
+    { "src": "/strapi/(.*)", "dest": "api/strapi/server.js" },
+    { "src": "/(.*)", "dest": "client/$1" }
+  ]
+}
