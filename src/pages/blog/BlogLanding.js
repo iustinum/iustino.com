@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import { marked } from "marked";
+import { format, parse } from "date-fns";
 
 const BlogLanding = () => {
   const [posts, setPosts] = useState([]);
@@ -22,52 +23,57 @@ const BlogLanding = () => {
           const doc = parser.parseFromString(markdownRendered, "text/html");
           const title = doc.querySelector("h1")?.textContent || "";
           const subtitle = doc.querySelector("h2")?.textContent || "";
-          const date = doc.querySelector("h3")?.textContent || "";
+          const dateString = doc.querySelector("h3")?.textContent || "";
           const imageElement = doc.querySelector("img");
           const image = imageElement ? imageElement.src : "";
+
+          // Parse the date string
+          const parsedDate = parse(dateString, 'MMM d, yyyy', new Date());
 
           return {
             slug,
             title,
             subtitle,
-            date,
+            date: parsedDate,
             image,
           };
         })
       );
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-      setPosts(posts); // Reverse the order of the posts array
+      posts.sort((a, b) => b.date - a.date);
+      setPosts(posts);
     };
 
     fetchPosts();
   }, []);
 
   return (
-    <div className="blog-landing-content">
-      {posts.map((post, index) => (
-        <div key={post.slug} className="blog-landing-section">
-          <div className="blog-landing-section-container">
-            <div className="blog-landing-section-text-area">
+    <div className="container mx-auto px-4 py-28">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <div key={post.slug} className="bg-white shadow-md rounded-lg overflow-hidden">
+            {post.image && (
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-48 object-cover"
+              />
+            )}
+            <div className="p-6">
+              <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
+              <p className="text-gray-600 mb-4">
+                {format(post.date, "MMM d, yyyy")}
+              </p>
+              <p className="text-gray-700 mb-4">{post.subtitle}</p>
               <Link
                 to={`/blog/${post.slug}`}
-                className="title-2 pb-8 hover:underline"
+                className="underline decoration-black decoration-1 underline-offset-2 hover:bg-black hover:text-white transition-colors duration-300"
               >
-                <h2>{post.title}</h2>
+                Read more
               </Link>
-              <p className="text-[18px] mb-8 font-bold">{post.date}</p>
-              <p className="text-[18px] mb-8 ">{post.subtitle}</p>
             </div>
-            {post.image && (
-              <div className="blog-landing-image-container">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                />
-              </div>
-            )}
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

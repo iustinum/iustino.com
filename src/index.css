@@ -45,9 +45,6 @@
 }
 
 @layer base {
-  html {
-    font-size: 62.5%;
-  }
 
   body {
     @apply leading-snug font-['Sohne-Buch'] text-black bg-white overflow-y-auto antialiased;

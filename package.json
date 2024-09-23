@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "animate.css": "^4.1.1",
     "aws-sdk": "^2.1665.0",
+    "date-fns": "^4.1.0",
     "exif-js": "^2.3.0",
     "exif-reader": "^2.0.1",
     "express": "^4.19.2",
