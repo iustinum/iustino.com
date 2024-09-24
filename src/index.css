@@ -47,7 +47,8 @@
 @layer base {
 
   body {
-    @apply leading-snug font-['Sohne-Buch'] text-black bg-white overflow-y-auto antialiased;
+    @apply leading-snug text-black bg-white overflow-y-auto antialiased;
+    font-family: 'Sohne-Buch', Helvetica;
   }
 }
 
