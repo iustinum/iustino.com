@@ -5,8 +5,8 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
-import BlogLanding from './pages/blog/BlogLanding';
-import BlogPost from './pages/blog/BlogPost';
+import BlogList from './pages/BlogList';
+import BlogDetail from './pages/BlogDetail';
 import AlbumGallery from './pages/AlbumGallery';
 import AlbumDetails from './pages/AlbumDetails';
 
@@ -20,8 +20,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/blog" element={<BlogLanding />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/blog" element={<BlogList />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/gallery" element={<AlbumGallery />} />
           <Route path="/gallery/:albumName" element={<AlbumDetails />} />
         </Route>
