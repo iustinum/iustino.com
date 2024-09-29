@@ -16,7 +16,7 @@ const BlogDetail = () => {
       setPost(currentPost);
 
       if (currentPost) {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/blocks/${currentPost.id}/children`);
+        const response = await fetch(`/api/blocks/${currentPost.id}/children`);
         const data = await response.json();
         const parsedBlocks = await parseNotionBlocks(data.results);
         setBlocks(parsedBlocks);
