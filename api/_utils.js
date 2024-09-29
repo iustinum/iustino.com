@@ -1,3 +1,1 @@
-import fetch from 'node-fetch';
-
-export { fetch };
+export const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
