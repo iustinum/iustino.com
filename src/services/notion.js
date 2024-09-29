@@ -1,11 +1,12 @@
-import axios from 'axios';
-
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = '/api';
 
 export const fetchBlogPosts = async () => {
   try {
-    const response = await axios.post(`${API_URL}/api/blogPosts`);
-    return response.data.results.map(page => ({
+    const response = await fetch(`${API_URL}/blogPosts`, {
+        method: 'POST',
+      });
+    const data = await response.json();
+    return data.results.map(page => ({
       id: page.id,
       title: page.properties.Title.title[0]?.plain_text || '',
       excerpt: page.properties.Excerpt.rich_text[0]?.plain_text || '',
@@ -42,8 +43,9 @@ export const parseNotionBlocks = async (blocks, depth = 0) => {
 
 const fetchChildBlocks = async (blockId) => {
   try {
-    const response = await axios.get(`${API_URL}/api/blocks/${blockId}/children`);
-    return response.data.results;
+    const response = await fetch(`${API_URL}/blocks/${blockId}/children`);
+    const data = await response.json();
+    return data.results;
   } catch (error) {
     console.error('Error fetching child blocks:', error);
     return [];
