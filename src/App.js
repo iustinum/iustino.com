@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import About from './pages/About';
-import Projects from './pages/Projects';
-import BlogList from './pages/BlogList';
-import BlogDetail from './pages/BlogDetail';
-import AlbumGallery from './pages/AlbumGallery';
-import AlbumDetails from './pages/AlbumDetails';
+import Layout from './components/Layout.js';
+import Home from './pages/Home.js';
+import About from './pages/About.js';
+import Projects from './pages/Projects.js';
+import BlogList from './pages/BlogList.js';
+import BlogDetail from './pages/BlogDetail.js';
+import AlbumGallery from './pages/AlbumGallery.js';
+import AlbumDetails from './pages/AlbumDetails.js';
 
 function App() {
   const location = useLocation();

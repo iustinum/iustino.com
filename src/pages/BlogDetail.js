@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchBlogPosts, parseNotionBlocks } from '../services/notion';
-import NotionBlock from '../components/NotionBlock';
+import { fetchBlogPosts, parseNotionBlocks } from '../services/notion.js';
+import NotionBlock from '../components/NotionBlock.js';
 import { format, parseISO } from 'date-fns';
 
 const BlogDetail = () => {

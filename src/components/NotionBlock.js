@@ -1,14 +1,14 @@
 import React from 'react';
-import Heading1 from './notionComponents/Heading1';
-import Heading2 from './notionComponents/Heading2';
-import Heading3 from './notionComponents/Heading3';
-import Paragraph from './notionComponents/Paragraph';
-import Image from './notionComponents/Image';
-import CodeBlock from './notionComponents/CodeBlock';
-import BulletedList from './notionComponents/BulletedList';
-import NumberedList from './notionComponents/NumberedList';
-import Quote from './notionComponents/Quote';
-import Equation from './notionComponents/Equation';
+import Heading1 from './notionComponents/Heading1.js';
+import Heading2 from './notionComponents/Heading2.js';
+import Heading3 from './notionComponents/Heading3.js';
+import Paragraph from './notionComponents/Paragraph.js';
+import Image from './notionComponents/Image.js';
+import CodeBlock from './notionComponents/CodeBlock.js';
+import BulletedList from './notionComponents/BulletedList.js';
+import NumberedList from './notionComponents/NumberedList.js';
+import Quote from './notionComponents/Quote.js';
+import Equation from './notionComponents/Equation.js';
 
 const componentMap = {
   heading_1: Heading1,

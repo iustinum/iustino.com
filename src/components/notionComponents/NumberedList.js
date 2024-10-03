@@ -1,6 +1,6 @@
 import React from 'react';
-import RichText from './RichText';
-import NotionBlock from '../NotionBlock';
+import RichText from './RichText.js';
+import NotionBlock from '../NotionBlock.js';
 
 const NumberedList = ({ content, children, depth = 0, index = 1 }) => {
     const listStyles = ['decimal', 'lower-alpha', 'lower-roman'];

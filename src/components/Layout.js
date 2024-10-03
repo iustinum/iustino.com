@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "./Sidebar";
-import PageTransition from "./PageTransition";
+import Sidebar from "./Sidebar.js";
+import PageTransition from "./PageTransition.js";
 
 const Layout = () => {
   return (

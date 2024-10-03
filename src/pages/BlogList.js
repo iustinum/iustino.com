@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import { format, parseISO } from "date-fns";
-import { fetchBlogPosts } from "../services/notion";
+import { fetchBlogPosts } from "../services/notion.js";
 
 const BlogList = () => {
   const [posts, setPosts] = useState([]);

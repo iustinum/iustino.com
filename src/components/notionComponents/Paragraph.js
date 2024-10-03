@@ -1,6 +1,6 @@
 import React from 'react';
-import RichText from './RichText';
-import Equation from './Equation';
+import RichText from './RichText.js';
+import Equation from './Equation.js';
 
 const Paragraph = ({ content }) => {
   return (

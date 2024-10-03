@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { fetchManifest, getImageUrl } from "../utils/imageManifest";
+import { fetchManifest, getImageUrl } from "../utils/imageManifest.js";
 
 const AlbumDetails = () => {
   const [albumData, setAlbumData] = useState(null);
