@@ -20,6 +20,17 @@ export const fetchBlogPosts = async () => {
   }
 };
 
+export const fetchChildBlocks = async (blockId) => {
+  try {
+    const response = await fetch(`${API_URL}/blocks/${blockId}/children`);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching child blocks:', error);
+    return [];
+  }
+};
+
 export const parseNotionBlocks = async (blocks, depth = 0) => {
     const parsedBlocks = [];
   
@@ -37,17 +48,5 @@ export const parseNotionBlocks = async (blocks, depth = 0) => {
   
       parsedBlocks.push(parsedBlock);
     }
-  
     return parsedBlocks;
-};
-
-const fetchChildBlocks = async (blockId) => {
-  try {
-    const response = await fetch(`${API_URL}/blocks/${blockId}/children`);
-    const data = await response.json();
-    return data.results;
-  } catch (error) {
-    console.error('Error fetching child blocks:', error);
-    return [];
-  }
 };
