@@ -46,11 +46,11 @@
 
 @layer base {
   body {
-    @apply leading-snug text-black bg-white overflow-y-auto antialiased;
+    @apply antialiased;
     font-family: "Sohne-Buch", Helvetica;
   }
 
-  p {
+  p, li {
     @apply text-lg;
   }
 }
