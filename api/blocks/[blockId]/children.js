@@ -9,7 +9,8 @@ export default async function handler(req, res) {
       let allResults = [];
       let hasMore = true;
       let nextCursor = undefined;
-
+      
+      // Recursively fetch beyond 100 results limit
       while (hasMore) {
         const url = new URL(
           `https://api.notion.com/v1/blocks/${blockId}/children`

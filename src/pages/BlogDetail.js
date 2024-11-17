@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchBlogPosts, parseNotionBlocks, fetchChildBlocks } from '../services/notion.js';
-import NotionBlock from '../components/NotionBlock.js';
-import { format, parseISO } from 'date-fns';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import {
+  fetchBlogPosts,
+  parseNotionBlocks,
+  fetchChildBlocks,
+} from "../services/notion.js";
+import NotionBlock from "../components/NotionBlock.js";
+import { format, parseISO } from "date-fns";
 
 const BlogDetail = () => {
   const [post, setPost] = useState(null);
@@ -12,7 +16,7 @@ const BlogDetail = () => {
   useEffect(() => {
     const loadPost = async () => {
       const posts = await fetchBlogPosts();
-      const currentPost = posts.find(p => p.slug === slug);
+      const currentPost = posts.find((p) => p.slug === slug);
       setPost(currentPost);
 
       if (currentPost) {
@@ -58,19 +62,29 @@ const BlogDetail = () => {
       <div className="w-full max-w-4xl mx-auto px-16 lg:max-w-5xl xl:max-w-5xl">
         {blocks.map((block) => {
           // Only increment index for numbered list items
-          if (block.type === 'numbered_list_item') {
-            const blockElement = (
-              <div key={block.id} className="mb-6">
-                <NotionBlock block={block} index={numberedListIndex} /> {/* Pass the counter */}
+          if (
+            block.type === "numbered_list_item" ||
+            block.type === "bulleted_list_item"
+          ) {
+            return (
+              <div key={block.id} className="ml-8">
+                <NotionBlock
+                  block={block}
+                  index={
+                    block.type === "numbered_list_item"
+                      ? numberedListIndex++
+                      : undefined
+                  }
+                />
               </div>
             );
-            numberedListIndex += 1; // Increment the counter only for numbered list items
-            return blockElement;
           }
-          
-          // For other block types, just render normally without incrementing the index
+
+          numberedListIndex = 1;
+
+          // For other block types, just render normally
           return (
-            <div key={block.id} className="mb-6">
+            <div key={block.id} className="my-10">
               <NotionBlock block={block} />
             </div>
           );

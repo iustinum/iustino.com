@@ -31,7 +31,7 @@ export const fetchChildBlocks = async (blockId) => {
   }
 };
 
-export const parseNotionBlocks = async (blocks, depth = 0) => {
+export const parseNotionBlocks = async (blocks) => {
     const parsedBlocks = [];
   
     for (const block of blocks) {
@@ -43,7 +43,7 @@ export const parseNotionBlocks = async (blocks, depth = 0) => {
   
       if (block.has_children) {
         const childBlocks = await fetchChildBlocks(block.id);
-        parsedBlock.children = await parseNotionBlocks(childBlocks, depth + 1);
+        parsedBlock.children = await parseNotionBlocks(childBlocks);
       }
   
       parsedBlocks.push(parsedBlock);

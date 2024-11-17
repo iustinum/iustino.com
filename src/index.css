@@ -45,10 +45,13 @@
 }
 
 @layer base {
-
   body {
     @apply leading-snug text-black bg-white overflow-y-auto antialiased;
-    font-family: 'Sohne-Buch', Helvetica;
+    font-family: "Sohne-Buch", Helvetica;
+  }
+
+  p {
+    @apply text-lg;
   }
 }
 
