@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {
-  fetchBlogPosts,
-  parseNotionBlocks,
-  fetchChildBlocks,
-} from "../services/notion.js";
+import { fetchBlogPosts, fetchChildBlocks } from "../services/notion.js";
 import NotionBlock from "../components/NotionBlock.js";
 import { format, parseISO } from "date-fns";
 
@@ -20,8 +16,7 @@ const BlogDetail = () => {
       setPost(currentPost);
 
       if (currentPost) {
-        const blocks = await fetchChildBlocks(currentPost.id);
-        const parsedBlocks = await parseNotionBlocks(blocks);
+        const parsedBlocks = await fetchChildBlocks(currentPost.id);
         setBlocks(parsedBlocks);
       }
     };

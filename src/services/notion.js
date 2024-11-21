@@ -24,41 +24,37 @@ export const fetchChildBlocks = async (blockId) => {
   try {
     const response = await fetch(`${API_URL}/blocks/${blockId}/children`);
     const data = await response.json();
-    return data.results;
+    const blocks = data.results;
+
+    const processedBlocks = [];
+    const blocksWithChildren = [];
+
+    await Promise.all(
+      blocks.map(async (block) => {
+        const parsedBlock = {
+          id: block.id,
+          type: block.type,
+          content: block[block.type],
+        };
+
+        if (block.has_children) {
+          blocksWithChildren.push(parsedBlock);
+        }
+
+        processedBlocks.push(parsedBlock);
+      })
+    );
+
+    await Promise.all(
+      blocksWithChildren.map(async (parsedBlock) => {
+        const childBlocks = await fetchChildBlocks(parsedBlock.id);
+        parsedBlock.children = childBlocks;
+      })
+    );
+
+    return processedBlocks;
   } catch (error) {
     console.error("Error fetching child blocks:", error);
     return [];
   }
-};
-
-export const parseNotionBlocks = async (blocks) => {
-  const processedBlocks = [];
-  const blocksWithChildren = [];
-
-  // Process all blocks at the current level in parallel
-  await Promise.all(
-    blocks.map(async (block) => {
-      const parsedBlock = {
-        id: block.id,
-        type: block.type,
-        content: block[block.type],
-      };
-
-      if (block.has_children) {
-        blocksWithChildren.push(parsedBlock);
-      }
-
-      processedBlocks.push(parsedBlock);
-    })
-  );
-
-  // Fetch child blocks for all blocks with children in parallel
-  await Promise.all(
-    blocksWithChildren.map(async (parsedBlock) => {
-      const childBlocks = await fetchChildBlocks(parsedBlock.id);
-      parsedBlock.children = await parseNotionBlocks(childBlocks);
-    })
-  );
-
-  return processedBlocks;
 };

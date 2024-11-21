@@ -1,6 +1,3 @@
-const fetch = (...args) =>
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
-
 export default async function handler(req, res) {
   const { blockId } = req.query;
 
@@ -9,7 +6,7 @@ export default async function handler(req, res) {
       let allResults = [];
       let hasMore = true;
       let nextCursor = undefined;
-      
+
       // Recursively fetch beyond 100 results limit
       while (hasMore) {
         const url = new URL(
